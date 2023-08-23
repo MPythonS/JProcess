@@ -48,16 +48,6 @@ class JuiceBerriesAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     ordering = ('name',)
 
-class NewAdmin(admin.ModelAdmin):
-    list_display = (
-        'name',
-        'active',
-        'created',
-        'updated',
-    )
-    list_filter = ('active',)
-    search_fields = ('name',)
-    ordering = ('name',)
 
 admin.site.register(JuiceTypes, JuiceTypesAdmin)
 admin.site.register(JuiceFruits, JuiceFruitsAdmin)
