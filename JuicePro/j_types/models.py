@@ -1,5 +1,5 @@
-from django.db import models
 
+from django.db import models
 
 # Create your models here.
 # modelis sulčių tipams (t.y. iš ko gaminama sultys (Vaisių, daržovių, vaisių ir daržovių, uogų, vaisių ir uogų, daržovių ir uogų)
