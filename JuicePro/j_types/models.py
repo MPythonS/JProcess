@@ -60,3 +60,32 @@ class JuiceBerries(models.Model):
     class Meta:
         verbose_name = 'Uogos'
         verbose_name_plural = 'Uogos'
+
+class Package(models.Model):
+    name = models.CharField(max_length=256, null=False, blank=False, verbose_name='Pakuotės tipas')
+    active = models.BooleanField(default=True, verbose_name='Aktyvus')
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00, verbose_name='Kaina')
+    created = models.DateTimeField(auto_now_add=True, verbose_name='Sukurta')
+    updated = models.DateTimeField(auto_now=True, verbose_name='Atnaujinta')
+
+    def __str__(self):
+        return f"{self.name}"
+
+    class Meta:
+        verbose_name = 'Pakuotės tipas'
+        verbose_name_plural = 'Pakuotės tipai'
+
+class Services(models.Model):
+    name = models.CharField(max_length=256, null=False, blank=False, verbose_name='Paslaugos tipas')
+    active = models.BooleanField(default=True, verbose_name='Aktyvus')
+    unit = models.CharField(max_length=30, null=False, blank=False, verbose_name='Vienetas')
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00, verbose_name='Kaina')
+    created = models.DateTimeField(auto_now_add=True, verbose_name='Sukurta')
+    updated = models.DateTimeField(auto_now=True, verbose_name='Atnaujinta')
+
+    def __str__(self):
+        return f"{self.name}"
+
+    class Meta:
+        verbose_name = 'Paslaugos tipas'
+        verbose_name_plural = 'Paslaugų tipai'
