@@ -11,10 +11,10 @@ class Customer(models.Model):
     customer_surname = models.CharField(max_length=200, verbose_name='Kliento pavardė')
     customer_phone = models.CharField(max_length=200, verbose_name='Kliento tel. nr.')
     customer_email = models.CharField(max_length=200, verbose_name='Kliento el. paštas')
-    customer_address = models.CharField(max_length=200, verbose_name='Kliento adresas')
-    customer_city = models.CharField(max_length=200, verbose_name='Kliento miestas')
-    customer_postal_code = models.CharField(max_length=200, verbose_name='Kliento pašto kodas')
-    customer_notes = models.CharField(max_length=200, verbose_name='Pastabos')
+    customer_address = models.CharField(max_length=200, default='-', verbose_name='Kliento adresas')
+    customer_city = models.CharField(max_length=200, default='-', verbose_name='Kliento miestas')
+    customer_postal_code = models.CharField(max_length=200, default='-',  verbose_name='Kliento pašto kodas')
+    customer_notes = models.CharField(max_length=200, default='-',  verbose_name='Pastabos')
 
     def __str__(self):
         return f"{self.customer_name} {self.customer_surname}"

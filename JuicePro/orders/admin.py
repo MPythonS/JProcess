@@ -8,21 +8,17 @@ class OrderAdmin(admin.ModelAdmin):
         'order_id',
         'order_date',
         'order_time',
+        'customer',
         'order_total',
         'order_status',
         'order_notes',
-        'j_name',
-        'f_name',
-        'b_name',
-        'v_name',
-        'package_name',
         'package_count',
-        'service_name',
         'service_count'
     )
     list_filter = (
         'order_date',
         'order_time',
+        'customer',
         'order_status',
         'j_name',
         'f_name',
@@ -37,6 +33,7 @@ class OrderAdmin(admin.ModelAdmin):
         'order_id',
         'order_date',
         'order_time',
+        'customer',
         'order_status',
         'j_name',
         'f_name',
@@ -51,7 +48,7 @@ class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ('order_id',)
     fieldsets = (
         ('Užsakymo informacija', {
-            'fields': ('order_id', 'order_date', 'order_time', 'order_total', 'order_status', 'order_notes')
+            'fields': ('order_id', 'order_date', 'order_time','customer', 'order_total', 'order_status', 'order_notes')
         }),
         ('Sultys', {
             'fields': ('j_name', 'f_name', 'b_name', 'v_name')

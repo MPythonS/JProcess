@@ -1,0 +1,257 @@
+[
+  {
+    "model": "j_types.juicetypes",
+    "pk": 1,
+    "fields": {
+      "name": "Vaisių sultys",
+      "active": true,
+      "created": "2023-08-28T17:49:12.089Z",
+      "updated": "2023-08-28T17:49:12.089Z"
+    }
+  },
+  {
+    "model": "j_types.juicetypes",
+    "pk": 2,
+    "fields": {
+      "name": "Daržovių sultys",
+      "active": true,
+      "created": "2023-08-28T17:49:20.064Z",
+      "updated": "2023-08-28T17:49:20.064Z"
+    }
+  },
+  {
+    "model": "j_types.juicetypes",
+    "pk": 3,
+    "fields": {
+      "name": "Uogų sultys",
+      "active": true,
+      "created": "2023-08-28T17:49:39.109Z",
+      "updated": "2023-08-28T17:49:39.109Z"
+    }
+  },
+  {
+    "model": "j_types.juicetypes",
+    "pk": 4,
+    "fields": {
+      "name": "Maišytos sultys",
+      "active": true,
+      "created": "2023-08-28T17:49:45.711Z",
+      "updated": "2023-08-28T17:49:45.711Z"
+    }
+  },
+  {
+    "model": "j_types.juicefruits",
+    "pk": 1,
+    "fields": {
+      "name": "Obuoliai",
+      "active": true,
+      "created": "2023-08-28T17:48:30.432Z",
+      "updated": "2023-08-28T17:48:30.432Z"
+    }
+  },
+  {
+    "model": "j_types.juicefruits",
+    "pk": 2,
+    "fields": {
+      "name": "Kriaušės",
+      "active": true,
+      "created": "2023-08-28T17:48:43.129Z",
+      "updated": "2023-08-28T17:48:43.129Z"
+    }
+  },
+  {
+    "model": "j_types.juicefruits",
+    "pk": 3,
+    "fields": {
+      "name": "Svarainiai",
+      "active": true,
+      "created": "2023-08-28T17:48:58.338Z",
+      "updated": "2023-08-28T17:48:58.338Z"
+    }
+  },
+  {
+    "model": "j_types.juicevegetables",
+    "pk": 1,
+    "fields": {
+      "name": "Pomidorai",
+      "active": true,
+      "created": "2023-08-28T17:41:32.333Z",
+      "updated": "2023-08-28T17:41:32.333Z"
+    }
+  },
+  {
+    "model": "j_types.juicevegetables",
+    "pk": 2,
+    "fields": {
+      "name": "Salierai",
+      "active": true,
+      "created": "2023-08-28T17:41:39.870Z",
+      "updated": "2023-08-28T17:41:39.870Z"
+    }
+  },
+  {
+    "model": "j_types.juicevegetables",
+    "pk": 3,
+    "fields": {
+      "name": "Morkos",
+      "active": true,
+      "created": "2023-08-28T17:41:47.069Z",
+      "updated": "2023-08-28T17:41:47.069Z"
+    }
+  },
+  {
+    "model": "j_types.juicevegetables",
+    "pk": 4,
+    "fields": {
+      "name": "Burokėliai",
+      "active": true,
+      "created": "2023-08-28T17:42:28.124Z",
+      "updated": "2023-08-28T17:42:28.124Z"
+    }
+  },
+  {
+    "model": "j_types.juiceberries",
+    "pk": 1,
+    "fields": {
+      "name": "Aronijos",
+      "active": true,
+      "created": "2023-08-28T17:47:39.460Z",
+      "updated": "2023-08-28T17:47:39.460Z"
+    }
+  },
+  {
+    "model": "j_types.juiceberries",
+    "pk": 2,
+    "fields": {
+      "name": "Juodieji serbentai",
+      "active": true,
+      "created": "2023-08-28T17:47:58.392Z",
+      "updated": "2023-08-28T17:47:58.392Z"
+    }
+  },
+  {
+    "model": "j_types.juiceberries",
+    "pk": 3,
+    "fields": {
+      "name": "Raudonieji serbentai",
+      "active": true,
+      "created": "2023-08-28T17:48:11.617Z",
+      "updated": "2023-08-28T17:48:11.617Z"
+    }
+  },
+  {
+    "model": "j_types.package",
+    "pk": 1,
+    "fields": {
+      "name": "2 ltr. plastikinis maišelis",
+      "active": true,
+      "price": "2.50",
+      "created": "2023-08-28T17:50:45.520Z",
+      "updated": "2023-08-28T17:50:45.520Z"
+    }
+  },
+  {
+    "model": "j_types.package",
+    "pk": 2,
+    "fields": {
+      "name": "3 ltr. maišelis su kraneliu",
+      "active": true,
+      "price": "2.75",
+      "created": "2023-08-28T17:51:20.696Z",
+      "updated": "2023-08-28T17:51:20.696Z"
+    }
+  },
+  {
+    "model": "j_types.package",
+    "pk": 3,
+    "fields": {
+      "name": "5 ltr. maišelis su kraneliu",
+      "active": true,
+      "price": "3.00",
+      "created": "2023-08-28T17:51:31.919Z",
+      "updated": "2023-08-28T17:51:31.919Z"
+    }
+  },
+  {
+    "model": "j_types.package",
+    "pk": 4,
+    "fields": {
+      "name": "3 ltr. maišelis su kraneliu kartoninėje dėžutėje",
+      "active": true,
+      "price": "3.05",
+      "created": "2023-08-28T17:52:08.665Z",
+      "updated": "2023-08-28T17:52:08.665Z"
+    }
+  },
+  {
+    "model": "j_types.package",
+    "pk": 5,
+    "fields": {
+      "name": "5 ltr. maišelis su kraneliu kartoninėje dėžutėje",
+      "active": true,
+      "price": "3.20",
+      "created": "2023-08-28T17:52:35.007Z",
+      "updated": "2023-08-28T17:52:35.007Z"
+    }
+  },
+  {
+    "model": "j_types.services",
+    "pk": 1,
+    "fields": {
+      "name": "Galiojimo etiketė",
+      "active": true,
+      "unit": "vnt.",
+      "price": "0.05",
+      "created": "2023-08-28T17:53:44.489Z",
+      "updated": "2023-08-28T17:53:44.489Z"
+    }
+  },
+  {
+    "model": "j_types.services",
+    "pk": 2,
+    "fields": {
+      "name": "Paėmimas (mieste)",
+      "active": true,
+      "unit": "vnt.",
+      "price": "5.00",
+      "created": "2023-08-28T17:54:09.968Z",
+      "updated": "2023-08-28T17:54:09.968Z"
+    }
+  },
+  {
+    "model": "j_types.services",
+    "pk": 3,
+    "fields": {
+      "name": "Paėmimas (rajone)",
+      "active": true,
+      "unit": "vnt.",
+      "price": "15.00",
+      "created": "2023-08-28T17:54:31.977Z",
+      "updated": "2023-08-28T17:54:31.977Z"
+    }
+  },
+  {
+    "model": "j_types.services",
+    "pk": 4,
+    "fields": {
+      "name": "Pristatymas (mieste)",
+      "active": true,
+      "unit": "vnt.",
+      "price": "7.50",
+      "created": "2023-08-28T17:55:01.961Z",
+      "updated": "2023-08-28T17:55:01.961Z"
+    }
+  },
+  {
+    "model": "j_types.services",
+    "pk": 5,
+    "fields": {
+      "name": "Pristatymas (rajone)",
+      "active": true,
+      "unit": "vnt.",
+      "price": "25.00",
+      "created": "2023-08-28T17:55:16.849Z",
+      "updated": "2023-08-28T17:55:16.849Z"
+    }
+  }
+]
