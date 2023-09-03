@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <title>Ištrinti užsakymą</title>
+</head>
+<body>
+    <h1>Ištrinti užsakymą #{{ order_id }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ customer_form.as_p }}
+        {{ order_form.as_p }}
+        <button type="submit">Trinti</button>
+    </form>
+</body>
+</html>

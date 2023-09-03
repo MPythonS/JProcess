@@ -13,6 +13,7 @@ class OrderAdmin(admin.ModelAdmin):
         'order_status',
         'order_notes',
         'package_count',
+        'package_count2',
         'service_count'
     )
     list_filter = (
@@ -54,7 +55,7 @@ class OrderAdmin(admin.ModelAdmin):
             'fields': ('j_name', 'f_name', 'b_name', 'v_name')
         }),
         ('Pakuotės', {
-            'fields': ('package_name', 'package_count')
+            'fields': ('package_name', 'package_count', 'package_name2', 'package_count2')
         }),
         ('Paslaugos', {
             'fields': ('service_name', 'service_count')

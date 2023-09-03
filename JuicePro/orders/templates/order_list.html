@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <title>Užsakymai</title>
+    <meta http-equiv="refresh" content="30">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+
+</head>
+<body style="background: #FFF779">
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+        <a class="navbar-brand" href="">Meniu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item text-light"> <!-- Pridėta text-light klasė -->
+                    <a class="nav-link" href="{% url 'order_list' %}">Užsakymų sąrašas</a>
+                </li>
+                <li class="nav-item text-light"> <!-- Pridėta text-light klasė -->
+                    <a class="nav-link" href="{% url 'customer_list' %}">Klientų sąrašas</a>
+                </li>
+                <li class="nav-item text-light"> <!-- Pridėta text-light klasė -->
+                    <a class="nav-link" href="{% url 'order_form' %}">Naujas užsakymas</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<h1>Užsakymų sąrašas</h1>
+<div>
+    <table class="table table-hover">
+        <tr>
+            <th scope="col">Užsakymo numeris</th>
+            <th scope="col">Užsakymo data</th>
+            <th scope="col">Užsakymo laikas</th>
+            <th scope="col">Kliento vardas</th>
+            <th scope="col">Kliento pavardė</th>
+            <th scope="col">Kliento telefono numeris</th>
+            <th scope="col">Kliento el. paštas</th>
+            <th scope="col">Užsakymo suma</th>
+            <th scope="col">Užsakymo statusas</th>
+            <th scope="col">Laiško siuntimas</th>
+            <th scope="col">Redaguoti</th>
+            <th scope="col">Ištrinti</th>
+
+
+        </tr>
+        {% for order in orders %}
+<tr>
+
+    <td>{{ order.order_id }}</td>
+    <td>{{ order.order_date }}</td>
+    <td>{{ order.order_time }}</td>
+    <td>{{ order.customer.customer_name }}</td>
+    <td>{{ order.customer.customer_surname }}</td>
+    <td>{{ order.customer.customer_phone }}</td>
+    <td>{{ order.customer.customer_email }}</td>
+    <td>{{ order.order_total }}</td>
+    {% if order.order_status == 'Priimtas' %}
+    <td class = "bg-success">{{ order.order_status }}</td>
+    {% elif order.order_status == 'Atšauktas' %}
+    <td class = "bg-danger">{{ order.order_status }}</td>
+    {% elif order.order_status == 'Vykdomas' %}
+    <td class = "bg-warning">{{ order.order_status }}</td>
+    {% elif order.order_status == 'Atliktas' %}
+    <td style="background:yellow">{{ order.order_status }}</td>
+    {% elif order.order_status == 'Atliktas' %}
+    <td style="background:#9CEA74">{{ order.order_status }}</td>
+    {% elif order.order_status == 'Pranešimas išsiųstas' %}
+    <td style="background:#5C80C8">{{ order.order_status }}</td>
+    {% elif order.order_status == 'Apmokėtas' %}
+    <td style="background:#C85CB8">{{ order.order_status }}</td>
+    {% elif order.order_status == 'Atsiimtas' %}
+    <td style="background:#D4BB8D">{{ order.order_status }}</td>
+    {% elif order.order_status == 'Užbaigtas' %}
+    <td style="color:red;background:#D4BB8D">{{ order.order_status }}</td>
+    {% else %}
+    <td>{{ order.order_status }}</td>
+    {% endif %}
+    <td><a href="{% url 'send_email' order.order_id %}">Laiško siuntimas</a></td>
+    <td><a href="{% url 'order_edit' order.order_id %}">Redaguoti</a></td>
+    <td><a href="{% url 'order_delete' order.order_id %}">Ištrinti</a></td>
+
+
+
+
+</tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+</body>
+</html>

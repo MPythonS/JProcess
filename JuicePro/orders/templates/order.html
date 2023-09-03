@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+          crossorigin="anonymous">
+
+    <title>Užsakymo įvedimas</title>
+
+</head>
+<body style="background: #FFF779">
+<div><h2>Dabar yra: <span id="laikasIrData"></span></h2></div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+        <a class="navbar-brand" href="">Meniu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item text-light">
+                    <a class="nav-link" href="{% url 'order_list' %}"><b>Užsakymų sąrašas</b></a>
+                </li>
+                <li class="nav-item text-light">
+                    <a class="nav-link" href="{% url 'customer_list' %}"> <b>Klientų sąrašas </b></a>
+                </li>
+                <li class="nav-item text-light">
+                    <a class="nav-link" href="{% url 'order_form' %}" > <b> Naujas užsakymas </b></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div>
+        <img class="img-fluid" src="../../static/images/logo_jpro.png" alt="JuicePro logo">
+    </div>
+
+
+    <div class="container">
+        <header class="header">
+            <h2> Duomenų įvedimas</h2>
+        </header>
+
+        <main class="main">
+            <h2>Kliento įvedimas</h2>
+            <div>
+                <form  method="post">
+                    {% csrf_token %}
+                    {{ customer_form.as_p }}
+                    <button type="submit" name="save_customer">Išsaugoti klientą</button>
+                </form>
+
+
+            <h2>Užsakymo įvedimas</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ order_form.as_p }}
+                <button type="submit" name="save_order">Išsaugoti užsakymą</button>
+            </form>
+
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    <strong>Form has errors:</strong>
+                    <ul>
+                        {% for field_errors in form.errors.values %}
+                            {% for error in field_errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2023 jPRO. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        window.onload = function () {
+            document.getElementById("id_order_date").setAttribute("type", "date");
+            document.getElementById("id_order_time").setAttribute("type", "time");
+        }
+    </script>
+
+    <script>
+        function atnaujintiLaikaIrData() {
+            var laikasIrData = new Date();
+            var laikasIrDataElementas = document.getElementById("laikasIrData");
+
+            var options = {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+
+            var formuotaDataLaikas = new Intl.DateTimeFormat('lt-lt', options).format(laikasIrData);
+
+            laikasIrDataElementas.innerHTML = formuotaDataLaikas;
+        }
+
+        setInterval(atnaujintiLaikaIrData, 1000); // Atnaujinti kiekvieną sekundę
+    </script>
+</body>
+</html>

@@ -6,7 +6,7 @@ from django.db import models
 
 
 # Create your models here.
-# Naudotojo modelis, darbuotojų prisijungimui pagal teises,
+# Naudotojo modelis,
 # prisijungimui naudojant elektroninį paštą ir uuid kodą
 
 class UserManager(BaseUserManager):
@@ -26,11 +26,13 @@ class UserManager(BaseUserManager):
 
 class User(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    username = models.CharField(max_length=100, blank=True, null=True)
     objects = UserManager()
-    email = models.EmailField(max_length=100, unique=True)
-    password = models.CharField(max_length=100)
-    is_anonymous = models.BooleanField(default=False)
-    is_authenticated = models.BooleanField(default=False)
+    email = models.EmailField(
+        verbose_name="email address",
+        max_length=255,
+        unique=True,
+    )
     is_admin = models.BooleanField(default=False)
     is_employee = models.BooleanField(default=False)
     REQUIRED_FIELDS = []
