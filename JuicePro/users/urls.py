@@ -7,4 +7,5 @@ urlpatterns = [
     path('login/', views.user_login_view, name='login'),
     path('order/', create_order, name='order_form'),
 
+
 ]

@@ -2,6 +2,7 @@ import logging
 import sys
 from datetime import datetime
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -49,6 +50,8 @@ logger = logging.getLogger(__name__)
 
 
 ################################### užsakymo forma #########################################
+@login_required
+
 def create_order(request):
 
 
@@ -76,6 +79,7 @@ def create_order(request):
             if customer:
                 order.customer = customer
             order.save()
+            order_form.save_m2m() # Išsaugau daugelį į daugelį ryšį
 
             logger.debug("Order saved")  # Žinutė apie sėkmingą užsakymo išsaugojimą
             return redirect('success_page')
@@ -92,7 +96,7 @@ def create_order(request):
 
     pass
 ################################### Užsakymų sąrašas #########################################
-
+@login_required
 def order_list(request):
     orders = Order.objects.all()
     context = {
@@ -101,6 +105,7 @@ def order_list(request):
     return render(request, 'order_list.html', context)
     pass
 #################################### Užsakymo redagavimas #########################################
+@login_required
 def order_edit(request, pk):
     order = Order.objects.get(pk=pk)
     customer = order.customer
@@ -126,6 +131,7 @@ def order_edit(request, pk):
     return render(request, 'order_edit.html', context)
     pass
 ################################### el laiško siuntimas #########################################
+@login_required
 def send_email(request, pk):
     order = Order.objects.get(pk=pk)
     customer = order.customer
@@ -150,6 +156,7 @@ def send_email(request, pk):
     return render(request, 'send_email.html', context)
     pass
 ################################### Užsakymo trynimas #########################################
+@login_required
 def order_delete(request, pk):
     order = Order.objects.get(pk=pk)
     customer = order.customer
@@ -160,7 +167,6 @@ def order_delete(request, pk):
         customer.delete()
         return redirect('order_list')
     else:
-        # Handle the GET request here
         customer_form = CustomerForm(instance=customer)
         order_form = OrderForm(instance=order)
 
@@ -175,6 +181,7 @@ def order_delete(request, pk):
 
 
 ################################# Rūšiavimas pagal stutusą #########################################
+@login_required
 def order_list(request):
     orders = Order.objects.all().order_by('order_status')  # Order the queryset by order_status
     context = {'orders': orders}

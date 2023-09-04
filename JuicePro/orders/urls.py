@@ -1,7 +1,7 @@
 from django.urls import path
 from orders import views
 from orders.views import create_order, hello_view, success_page, order_list, home
-from users.views import user_login_view
+from users.views import user_login_view, user_logout_view
 
 urlpatterns = [
     path('hello/', hello_view),
@@ -14,5 +14,6 @@ urlpatterns = [
     path('', home, name='pradinis'),
     path('login/', user_login_view, name='login'),
     path('send_email/<int:pk>/', views.send_email, name='send_email'),
+    path('logout/', user_logout_view, name='logout')
 
 ]

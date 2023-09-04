@@ -10,6 +10,7 @@
   <form method="post">
     {% csrf_token %}
     {{ email_form.as_p }}
+
     <button type="submit">Siųsti</button>
   </form>
 </body>
