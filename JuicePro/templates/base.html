@@ -2,18 +2,17 @@
 <html lang="lt">
 
 <head>
+    {% block head %}
+    {% endblock %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <title>Pradinis</title>
 
-</head>
-    <body>
-        <header>
-            <div class="logo">
-
-        </div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-success">
+    <title>{% block title %}Default Title{% endblock %}</title>
+    <div style="width: 100%; background: white">
+        <img class="img-fluid" src="../../static/images/logo_jpro.png" alt="JuicePro logo">
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
         <a class="navbar-brand" href="">Meniu</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,22 +28,53 @@
                 <li class="nav-item text-light">
                     <a class="nav-link" href="{% url 'order_form' %}" > <b> Naujas užsakymas </b></a>
                 </li>
+                <li class="nav-item text-light">
+                    <a class="nav-link" href="{% url 'logout' %}"> <b> Atsijungti </b></a>
+                </li>
             </ul>
         </div>
     </nav>
-        </header>
+    <h2>Dabar yra: <span id="laikasIrData"></span></h2>
+
+</head>
+    <body style="background: #FFF779">
+    <header class="header">
+        {% block header %}
+
+        {% endblock %}
+    </header>
 
     <main>
         {% block content %}
 
         {% endblock %}
     </main>
-        <footer>
-        <div class="date-time">
-            Dabartinė data ir laikas: <span id="currentDateTime"></span>
-        </div>
-        <p>&copy; jPro.  2023 Visos teisės saugomos</p>
-        </footer>
+    <footer class="footer">
+        <p>&copy; jPRO 2023 Visos teisės saugomos.</p>
+    </footer>
+        <script>
+            function atnaujintiLaikaIrData() {
+                var laikasIrData = new Date();
+                var laikasIrDataElementas = document.getElementById("laikasIrData");
+
+                var options = {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                };
+
+                var formuotaDataLaikas = new Intl.DateTimeFormat('lt-lt', options).format(laikasIrData);
+
+                laikasIrDataElementas.innerHTML = formuotaDataLaikas;
+            }
+
+            setInterval(atnaujintiLaikaIrData, 1000); // Atnaujinti kiekvieną sekundę
+        </script>
+        {% block javascript %}
+        {% endblock %}
     </body>
 </html>
 

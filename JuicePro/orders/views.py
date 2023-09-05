@@ -6,12 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-
-from customers.models import Customer
-from orders import forms
 from orders.forms import OrderForm, CustomerForm, EmailForm
 from orders.models import Order
-from django import forms
 
 # Create your views here.
 
@@ -51,6 +47,7 @@ logger = logging.getLogger(__name__)
 
 ################################### užsakymo forma #########################################
 @login_required
+# dekoratorius login_required reikalauja, kad vartotojas būtų prisijungęs
 
 def create_order(request):
 

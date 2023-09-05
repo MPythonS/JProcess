@@ -7,7 +7,6 @@ urlpatterns = [
     path('hello/', hello_view),
     path('order/', create_order, name='order_form'), #  create_order paimtas iš order\views.py
     path('success/', success_page, name='success_page'),  # is create_order pakeista i hello_view
-#     užsakymų sąrašas
     path('order_list/', order_list, name='order_list'), #  create_order paimtas iš order\views.py
     path('order/<int:pk>/edit/', views.order_edit, name='order_edit'),
     path('order/<int:pk>/delete/', views.order_delete, name='order_delete'),

@@ -1,10 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-
-
 from customers.models import Customer
-from orders.forms import CustomerForm, OrderForm
-
+from orders.forms import CustomerForm
 
 # Create your views here.
 ################################### Klientų sąrašas #########################################
@@ -17,7 +14,6 @@ def customer_list(request):
         'customers': customers,
         'order_id': request.GET.get('order_id')  # Gauti užsakymo ID iš GET parametrų
     }
-
     return render(request, 'customer_list.html', context)
 
 #################################Kliento ištrynimas #########################################
@@ -41,4 +37,4 @@ def customer_delete(request, pk):
         'orders': orders,
         'customer_id': pk,
     }
-    return render(request, 'order_delete.html', context)
+    return render(request, 'customer_delete.html', context)

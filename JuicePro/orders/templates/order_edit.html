@@ -1,42 +1,20 @@
-<!DOCTYPE html>
-<html lang="lt">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-          crossorigin="anonymous">
 
-    <title>Redaguoti užsakymą</title>
-</head>
-<body style="background: #FFF779">
-<div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-success">
-        <a class="navbar-brand" href="">Meniu</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item text-light">
-                    <a class="nav-link" href="{% url 'order_list' %}">Užsakymų sąrašas</a>
-                </li>
-                <li class="nav-item text-light">
-                    <a class="nav-link" href="{% url 'customer_list' %}">Klientų sąrašas</a>
-                </li>
-                <li class="nav-item text-light">
-                    <a class="nav-link" href="{% url 'order_form' %}">Naujas užsakymas</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</div>
-    <h1>Redaguoti užsakymą #{{ order_id }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ customer_form.as_p }}
-        {{ order_form.as_p }}
-        <button type="submit">Išsaugoti</button>
-    </form>
+{% extends "base.html" %}
+
+{% block title %} Užsakymo ištrynimas {% endblock %}
+<body>
+    {% block header %}
+        <h2> Užsakymo redagavimas</h2>
+        <h3>Keisti užsakymą #{{ order_id }}</h3>
+    {% endblock %}
+    <main>
+        {% block content %}
+            <form method="post">
+                {% csrf_token %}
+                {{ customer_form.as_p }}
+                {{ order_form.as_p }}
+                <button type="submit">Keisti</button>
+            </form>
+        {% endblock %}
+    </main>
 </body>
-</html>
