@@ -1,24 +1,24 @@
-FROM python:3
-
-WORKDIR /usr/src/app
-
-
-# 1. pip freeze > requirements.txt (sukurti requirements.txt per terminala) sugeneruojame requirements.txt faila
-
-COPY requirements.txt .
-
-# saugome requirements.txt faila i dabartine direktorija
-
-
-RUN pip install -r requirements.txt
-
-# COPY appso koda i image, jei parašytume . . tai nukopijuotu viska
-COPY JuicePro .
-
-# su EXPOSE nurodomas portas, kuri naudosim ir jis susiejamas su konteineriu
-EXPOSE 8000
-# nurodome porto numeri per kuri vyks komunikacija expose 8000
-CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000"]
+#FROM python:3
+#
+#WORKDIR /usr/src/app
+#
+#
+## 1. pip freeze > requirements.txt (sukurti requirements.txt per terminala) sugeneruojame requirements.txt faila
+#
+#COPY requirements.txt .
+#
+## saugome requirements.txt faila i dabartine direktorija
+#
+#
+#RUN pip install -r requirements.txt
+#
+## COPY appso koda i image, jei parašytume . . tai nukopijuotu viska
+#COPY JuicePro .
+#
+## su EXPOSE nurodomas portas, kuri naudosim ir jis susiejamas su konteineriu
+#EXPOSE 8000
+## nurodome porto numeri per kuri vyks komunikacija expose 8000
+#CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000"]
 # kol CMD veikia, konteineris negali buti sustabdytas
 # 2. tada vykdom komanda: docker build .
 # 3. tada vykdom komanda: docker build . -t juicepro (juicepro - pavadinimas)

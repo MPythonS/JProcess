@@ -21,8 +21,11 @@ class Order(models.Model):
     )
     customer = models.ForeignKey(
         'customers.Customer',
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
+        null=True,
         verbose_name='Klientas'
+    #     nustatyta kad jei klientas bus ištrintas, tai užsakymas nebus ištrintas,
+        #     o bus tik atnaujintas į null
     )
     order_total = models.DecimalField(
         max_digits=10,

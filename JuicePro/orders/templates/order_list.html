@@ -24,7 +24,7 @@
                         <th scope="col">Redaguoti</th>
                         <th scope="col">Ištrinti</th>
                     </tr>
-                        {% for order in orders %}
+                    {% for order in orders %}
                     <tr>
                         <td>{{ order.order_id }}</td>
                         <td>{{ order.order_date }}</td>
@@ -59,13 +59,9 @@
                         <td><a href="{% url 'order_edit' order.order_id %}">Redaguoti</a></td>
                         <td><a href="{% url 'order_delete' order.order_id %}">Ištrinti</a></td>
                     <tr>
+                    {% endfor %}
                 </table>
                 <h4 style="color:red"> DĖMESIO!!! - ištrynus užsakymą ištrinamas ir klientas </h4>
-
-                    {% endfor %}
             {% endblock %}
         </main>
-
-
-    </body>
-</html>
+</body>

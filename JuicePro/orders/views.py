@@ -76,7 +76,10 @@ def create_order(request):
             if customer:
                 order.customer = customer
             order.save()
+
+
             order_form.save_m2m() # Išsaugau daugelį į daugelį ryšį
+
 
             logger.debug("Order saved")  # Žinutė apie sėkmingą užsakymo išsaugojimą
             return redirect('success_page')

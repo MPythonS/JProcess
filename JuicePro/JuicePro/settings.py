@@ -80,14 +80,14 @@ WSGI_APPLICATION = 'JuicePro.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        #  'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': BASE_DIR / 'db.sqlite3',
         # pakeista is django sqlite i postgresql
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'jpro',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
-        'HOST': 'db',
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'jpro',
+        # 'USER': 'admin',
+        # 'PASSWORD': 'admin',
+        # 'HOST': ['db'],
     }
 }
 

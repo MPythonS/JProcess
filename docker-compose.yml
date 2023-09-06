@@ -1,42 +1,48 @@
-version: "3"
-services:
-  jpro: # serviso pavadinimas mazosiomis raidemis
-    build: . # nurodome kelia iki Dockerfile (jei nurodome ., tai nurodome, kad Dockerfile yra tame pačiame aplanke)
-    command: python manage.py runserver 0.0.0.0:8000
-    # 12 perrašome komandą is Dockerfile ir is Dockerfile istriname komanda
-    # SVARBU: Nustatome enviroment kintamuosius, kurie yra settings.py faile
-    environment:
-      SECRET_KEY: ${SECRET_KEY} #naudojame ${} formata, nes nurodome kintamaji
-      EMAIL_HOST_USER: ${EMAIL_HOST_USER}
-      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD}
-      EMAIL_FROM: ${EMAIL_FROM}
-      ALLOWED_HOSTS: ${ALLOWED_HOSTS}
-      DEBUG: ${DEBUG}
-    ports:
-      - "8000:8000" # nurodome portus (sujungiam išorinius su vidiniais)
-# 8.  docker-compose up  (paleidžiame dockerį) (komanda naudojame viena karta, kita karta paleidziame su start)
-    volumes: # 9.  failo modifikacijas apjungiame per volumes ( universalus variantas)
-      - type: bind # nurodome tipą (- tik prieš type) bind - reiškia susietas
-        source: JuicePro # nurodome kelia iki projekto
-        target: /usr/src/app # nurodome kelia iki projekto
-    depends_on: # 11. nurodome priklausomybę (kad kai paleidžiame jpro, tai paleistų ir db)
-      db:
-        condition: service_healthy # nurodome sąlygą, kad db būtų paleista
-
-  db: # servisas duomenų bazei
-    image: postgres # nurodome kokį image naudosime
-    restart: always # nurodome, kad jei nutrūks, tai paleis iš naujo
-    environment:  # nurodome aplinkos kintamuosius juos rasime postgres dokumentacijoje(https://hub.docker.com/_/postgres
-      POSTGRES_PASSWORD: admin   # nurodome slaptažodį
-      POSTGRES_USER: admin # nurodome vartotoją
-      # 10 docker-compose up -d (paleidžiame dockerį)
-      # 13.  docker-compose down (išjungiame dockerį)
-      POSTGRES_DB: jpro # nurodome duomenų bazės pavadinimą
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U admin -d jpro"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-      # patikrinimas ar db veikia, jei ne, tai paleidžia iš naujo
-volumes:
-    JuisePro: # pavadinimas (kai keičiame kažką projekte, tai keičiasi ir dockeris)
+#version: "3"
+#services:
+#  jpro: # serviso pavadinimas mazosiomis raidemis
+#    build: . # nurodome kelia iki Dockerfile (jei nurodome ., tai nurodome, kad Dockerfile yra tame pačiame aplanke)
+#    command: python manage.py runserver 0.0.0.0:8000
+#    # 12 perrašome komandą is Dockerfile ir is Dockerfile istriname komanda
+#    # SVARBU: Nustatome enviroment kintamuosius, kurie yra settings.py faile
+#    environment:
+#      SECRET_KEY: ${SECRET_KEY} #naudojame ${} formata, nes nurodome kintamaji
+#      EMAIL_HOST_USER: ${EMAIL_HOST_USER}
+#      EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD}
+#      EMAIL_FROM: ${EMAIL_FROM}
+#      ALLOWED_HOSTS: ${ALLOWED_HOSTS}
+#      DEBUG: ${DEBUG}
+#    ports:
+#      - "8000:8000" # nurodome portus (sujungiam išorinius su vidiniais)
+## 8.  docker-compose up  (paleidžiame dockerį) (komanda naudojame viena karta, kita karta paleidziame su start)
+#    volumes: # 9.  failo modifikacijas apjungiame per volumes ( universalus variantas)
+#      - type: bind # nurodome tipą (- tik prieš type) bind - reiškia susietas
+#        source: JuicePro # nurodome kelia iki projekto
+#        target: /usr/src/app # nurodome kelia iki projekto
+#    depends_on: # 11. nurodome priklausomybę (kad kai paleidžiame jpro, tai paleistų ir db)
+#      db:
+#        condition: service_healthy # nurodome sąlygą, kad db būtų paleista
+#
+#  db: # servisas duomenų bazei
+#    image: postgres:13 # nurodome kokį image naudosime
+#    container_name: jprocess-db # nurodome konteinerio pavadinimą
+#    restart: always # nurodome, kad jei nutrūks, tai paleis iš naujo
+#    environment:  # nurodome aplinkos kintamuosius juos rasime postgres dokumentacijoje(https://hub.docker.com/_/postgres
+#      POSTGRES_PASSWORD: admin   # nurodome slaptažodį
+#      POSTGRES_USER: admin # nurodome vartotoją
+#      # 10 docker-compose up -d (paleidžiame dockerį)
+#      # 13.  docker-compose down (išjungiame dockerį)
+#      POSTGRES_DB: jpro # nurodome duomenų bazės pavadinimą
+#    healthcheck:
+#      test: ["CMD-SHELL", "pg_isready -U admin -d jpro"]
+#      interval: 10s
+#      timeout: 5s
+#      retries: 3
+#      # patikrinimas ar db veikia, jei ne, tai paleidžia iš naujo
+#  adminer:
+#    image: adminer
+#    restart: always
+#    ports:
+#      - 8080:8080
+#volumes:
+#    JuisePro: # pavadinimas (kai keičiame kažką projekte, tai keičiasi ir dockeris)
