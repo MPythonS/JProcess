@@ -25,7 +25,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = True if os.getenv("DEBUG") == "True" else False
-
+# True if os.getenv("DEBUG") == "True" else False
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
 
 # Application definition
@@ -80,8 +80,14 @@ WSGI_APPLICATION = 'JuicePro.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        #  'NAME': BASE_DIR / 'db.sqlite3',
+        # pakeista is django sqlite i postgresql
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'jpro',
+        'USER': 'admin',
+        'PASSWORD': 'admin',
+        'HOST': 'db',
     }
 }
 
@@ -123,7 +129,6 @@ STATIC_URL = '/static/'
 MEDIA_URL = "media/"
 IMAGE_URL = "static/images/"
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -150,7 +155,6 @@ LOGGING = {
     },
 }
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -160,8 +164,4 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_FROM = os.getenv("EMAIL_FROM")
 DEFAULT_FROM_EMAIL = EMAIL_FROM
 
-
 DIRS = [os.path.join(BASE_DIR, 'templates')]
-
-
-
